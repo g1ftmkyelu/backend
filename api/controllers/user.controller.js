@@ -33,6 +33,10 @@ exports.signup= async (req, res)=>{
 
 exports.getUsers=async (req, res)=>{
     try {
+
+
+       const accessToken=process.env.ACCESS_TOKEN_SECRET;
+       
        
        const allUsers= await User.find().exec();
        return res.status(200).json({users:allUsers});

@@ -7,7 +7,7 @@ const Authorize=async function(req, res, next){
     
     JWT.verify(token, process.env.ACCESS_TOKEN_SECRET||"", (error, user)=>{
         if(error) return res.status(403).json({message:"your token is no longer valid"})
-        req.body=user
+        req.user=user
         next()
     })
     }

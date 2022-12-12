@@ -1,6 +1,8 @@
 require("dotenv").config();
 const express= require("express");
 const UserRoute=require("./api/routes/user.route");
+const parcelRoute=require("./api/routes/parcel.route");
+const orderRoute=require("./api/routes/order.route");
 const mongoose = require('mongoose');
 const app=new express();
 
@@ -11,6 +13,8 @@ app.use(express.urlencoded({
 
 
 app.use("/user", UserRoute);
+app.use("/parcel", parcelRoute);
+app.use("/order", orderRoute);
 //Mongoose setup (database connection)
 const url = process.env.CONN_STRING 
 mongoose.connect(url,{ useNewUrlParser: true })
